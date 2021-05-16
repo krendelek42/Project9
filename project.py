@@ -123,18 +123,18 @@ def smeta(list_product,price_with_product):
     :param price_with_product: A dictionary where keys are products and values are prices.
     :return: A function that displays a list of products with a price.
     '''
-    print('{:^31}'.format('СМЕТА'))
-    print('|{:^15}|{:^10}|{:^6}|'.format('Отдел', 'Продукт', 'Цена'))
+    print('{:^41}'.format('СМЕТА'))
+    print('|{:^25}|{:^10}|{:^6}|'.format('Отдел', 'Продукт', 'Цена'))
     for i in list_product:
-        print('|{:^15}|{:^10}|{:^6}|'.format(i, '', ''))
+        print('|{:^25}|{:^10}|{:^6}|'.format(i, '', ''))
         x = list_product.get(i)
         if len(list(x)) == 1:
             p = price_with_product.get(x)
-            print('|{:^15}|{:<10}|{:^6}|'.format('',x,p))
+            print('|{:^25}|{:<10}|{:^6}|'.format('',x,p))
         else:
             for i in x:
                 p = price_with_product.get(i)
-                print('|{:^15}|{:<10}|{:^6}|'.format('',i,p))
+                print('|{:^25}|{:<10}|{:^6}|'.format('',i,p))
 
 def profit(price_with_product):
     '''
@@ -142,7 +142,9 @@ def profit(price_with_product):
     :return: A function that calculates profit.
     '''
     prices = []
-    prices = get_value(price_with_product, prices)
+    for i in price_with_product:
+        x = price_with_product[i]
+        prices.append(x)
     num = 0
     for i in prices:
         num += i
